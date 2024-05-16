@@ -1,4 +1,7 @@
-public class VehicleType{
+package src;
+
+
+public enum VehicleType{
     MEDIUM,
     LARGE
 }

@@ -1,6 +1,12 @@
+package src;
+
+
 public class Ticket{
     private String vehiclePlate;
-    private VehicleType type;
     private int slotNumber;
+    public Ticket(String vehiclePlate, int slotNumber){
+        this.vehiclePlate = vehiclePlate;
+        this.slotNumber = slotNumber;
+    }
     
 }

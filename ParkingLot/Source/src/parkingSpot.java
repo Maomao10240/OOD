@@ -1,4 +1,4 @@
-package Source/src;
+package src;
 
 public class parkingSpot{
     private int Id;
@@ -14,6 +14,12 @@ public class parkingSpot{
     }
     public void setEmpty(){
         this.occupied = false;
+    }
+    public int getId(){
+        return Id;
+    }
+    public void occupySpot(){
+        this.occupied = true;
     }
 
 }

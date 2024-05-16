@@ -1,3 +1,6 @@
+package src;
+
+
 public abstract class Vehicle{
     protected String plateNumber;
     protected VehicleType type;
