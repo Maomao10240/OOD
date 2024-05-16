@@ -11,6 +11,8 @@ public class Level{
 
     private boolean isAvailable;
     public Level(int levelNumber, int numberOfLarge, int numberOfMedium){
+        mediumParkingSpots = new ArrayList<>();
+        largeParkingSpots = new ArrayList<>();
         for(int i = 0; i < numberOfLarge; i++){
             largeParkingSpots.add(new parkingSpot(levelNumber*100+i, VehicleType.LARGE));
         }
@@ -25,9 +27,13 @@ public class Level{
     public parkingSpot findMediumSpot(){
         for(int i = 0; i < mediumParkingSpots.size(); i++){
             parkingSpot next = mediumParkingSpots.get(i);
-            if(!next.isOccupied()){
+            if(!next.isOccupied()){ 
+                if(i == mediumParkingSpots.size()-1){
+                    this.isAvailableMedium = false;
+                }
                 return next;
             }
+           
         }
         return null;
     }
@@ -35,9 +41,16 @@ public class Level{
         for(int i = 0; i < largeParkingSpots.size(); i++){
             parkingSpot next = largeParkingSpots.get(i);
             if(!next.isOccupied()){
+                if(i == largeParkingSpots.size()-1){
+                    this.isAvailableLarge = false;
+                }
                 return next;
             }
+            
         }
         return null;
+    }
+    public List<parkingSpot> getMediumList(){
+        return mediumParkingSpots;
     }
 }

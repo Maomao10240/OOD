@@ -7,6 +7,7 @@ public class ParkingLot implements Parking{
     private int numLevels;
     public ParkingLot(int numLevels){
         this.numLevels = numLevels;
+        this.levels = new ArrayList<>();
     }
 
     public boolean initializeParking(int numberOfLarge, int numberofMedium){
@@ -48,5 +49,26 @@ public class ParkingLot implements Parking{
             }
         }
         return null;
+    }
+
+    @Override
+    public int unPark(Ticket ticket){
+        String plate = ticket.getVehiclePlate();
+        int spotNumber = ticket.getSpot();
+        outloop:
+        for(int i = 0; i < numLevels; i++){
+            Level level = levels.get(i);
+            for(int j = 0; j < level.getMediumList().size(); j++){
+                parkingSpot pS = level.getMediumList().get(j);
+                if(pS.getId() == spotNumber){
+                    pS.setEmpty();
+                    break outloop;
+                }
+            }
+        }
+        Date currentDate = new Date();
+        int totalCost = (int) (currentDate.getTime() - ticket.getStartDate().getTime())/1000/3600*20;
+        return totalCost;
+
     }
 }

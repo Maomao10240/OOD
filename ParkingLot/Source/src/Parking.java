@@ -2,6 +2,8 @@ package src;
 
 
 public interface Parking{
+    //return ticket
     public Ticket park(Vehicle vehicle) throws Exception;
-    // public int unPark(Ticket ticket) throw Exception;
+    //return how much to pay
+    public int unPark(Ticket ticket) throws Exception;
 }
